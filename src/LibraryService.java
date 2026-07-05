@@ -33,6 +33,24 @@ public class LibraryService {
     }
 
     public void searchBook(int bookID){
+        for(Book book : library.getBooks()){
+            if (book.getID() == bookID){
+                System.out.println("Book " + bookID + " was found.");
+                return;
+            }
+        }System.out.println("Book " + bookID + " was not found.");
 
+    }
+
+    public void displayBook(int bookID){
+        for(Book book : library.getBooks()){
+            if (book.getID() == bookID){
+                System.out.println("Book ID: " + bookID + "\n" +
+                                    "Book Title: " + book.getTitle() + "\n" +
+                                    "Book Author: " + book.getAuthor() + "\n" +
+                                    "Book Borrowed: " + book.isBorrowed() + "\n");
+                return;
+            }
+        }System.out.println("Book " + bookID + " was not found.");
     }
 }
