@@ -1,4 +1,4 @@
-public class Book {
+public class Book implements Borrowable{
 
     private int id;
     private String title;
@@ -45,6 +45,18 @@ public class Book {
         borrowed = newStatus;
     }
 
+    public String getBookType() {
+        return "Book";
+    }
 
 
+    @Override
+    public void borrow() {
+        borrowed = true;
+    }
+
+    @Override
+    public void returnBook() {
+        borrowed = false;
+    }
 }

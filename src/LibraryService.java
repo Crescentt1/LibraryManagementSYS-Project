@@ -18,12 +18,12 @@ public class LibraryService {
 
     public void borrowBook(int bookID){
         for(Book book : library.getBooks()) {
-            if(bookID == book.getID()){
+            if(book.getID() == bookID){
                 if(!book.isBorrowed()){
-                    book.setBorrowed(true);
-                    System.out.println("Book : Borrowed");
+                    book.borrow();
+                    System.out.println("Book borrowed." + "\n");
                 } else {
-                    System.out.println("Book: Already Borrowed");
+                    System.out.println("Book is already borrowed." + "\n");
 
                 }
                 return;
@@ -52,5 +52,15 @@ public class LibraryService {
                 return;
             }
         }System.out.println("Book " + bookID + " was not found.");
+    }
+
+    public void displayAllBooks(){
+        for(Book book : library.getBooks()){
+            System.out.println("Book ID: " + book.getID() + "\n" +
+                    "Book Title: " + book.getTitle() + "\n" +
+                    "Book Author: " + book.getAuthor() + "\n" +
+                    "Book Borrowed: " + book.isBorrowed() + "\n\n");
+        }
+
     }
 }
